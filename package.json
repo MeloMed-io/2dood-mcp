@@ -1,6 +1,6 @@
 {
   "name": "2dood-mcp",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Let Claude, Cursor, Codex and other MCP apps read and write your 2DooD tasks",
   "type": "module",
   "bin": {
