@@ -1,0 +1,47 @@
+{
+  "name": "2dood-mcp",
+  "version": "0.3.0",
+  "description": "Let Claude, Cursor, Codex and other MCP apps read and write your 2DooD tasks",
+  "type": "module",
+  "bin": {
+    "2dood-mcp": "dist/index.js"
+  },
+  "scripts": {
+    "dev": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON src/index.ts",
+    "start": "node dist/index.js",
+    "login": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON src/index.ts login",
+    "build": "node build.mjs",
+    "test": "node --test test/*.test.ts",
+    "prepublishOnly": "npm test && npm run build"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.12",
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "@supabase/supabase-js": "^2.119.0",
+    "chrono-node": "^2.10.3",
+    "zod": "^4.6.7"
+  },
+  "license": "MIT",
+  "homepage": "https://melomed.io/developers/2dood",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "2dood",
+    "todo",
+    "claude"
+  ],
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MeloMed-io/2dood-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MeloMed-io/2dood-mcp/issues"
+  }
+}
