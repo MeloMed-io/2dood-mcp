@@ -9,7 +9,6 @@ import { join } from 'node:path';
 export const CONFIG_DIR = process.env.TWODOOD_MCP_HOME ?? join(homedir(), '.config', '2dood-mcp');
 const SESSION_FILE = join(CONFIG_DIR, 'session.json');
 
-/** Read EXPO_PUBLIC_* from the app's .env so there is one source of truth. */
 // The npm build bakes in 2DooD's public Supabase URL and publishable key (the
 // same values every copy of the app ships with). Row-level security, not the
 // key, is what keeps each user to their own tasks.

@@ -1,6 +1,7 @@
 // The MCP server itself: six task tools over a TaskStore. index.ts picks the
 // store (Supabase for real accounts, memory for --demo).
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
+import { readFileSync } from 'node:fs';
 import { z } from 'zod';
 import { DEMO_PERSONA } from './demo.ts';
 import {
@@ -17,7 +18,7 @@ import {
 } from './tasks.ts';
 
 const priority = z.enum(['none', 'medium', 'high']);
-const id = z.string().uuid();
+const id = z.string().uuid('use a task id from list_tasks or search_tasks');
 
 function ok(text: string) {
   return { content: [{ type: 'text' as const, text }] };
@@ -33,7 +34,13 @@ async function run(fn: () => Promise<string>) {
   }
 }
 
-export const VERSION = '0.3.0';
+// The npm build bakes in package.json's version (build.mjs). Running from
+// source reads it directly, so serverInfo never drifts from the package.
+declare const __PKG_VERSION__: string | undefined;
+export const VERSION: string =
+  typeof __PKG_VERSION__ === 'string'
+    ? __PKG_VERSION__
+    : JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8')).version;
 
 const INSTRUCTIONS =
   '2DooD is a student to-do app (to do or doom). Tasks are often course-coded ' +
