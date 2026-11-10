@@ -23,6 +23,7 @@ await build({
     js: "import { createRequire as __cr } from 'node:module'; const require = __cr(import.meta.url);",
   },
   define: {
+    __PKG_VERSION__: JSON.stringify(JSON.parse(readFileSync('package.json', 'utf8')).version),
     __TWODOOD_SUPABASE_URL__: JSON.stringify(url),
     __TWODOOD_SUPABASE_KEY__: JSON.stringify(key),
   },
